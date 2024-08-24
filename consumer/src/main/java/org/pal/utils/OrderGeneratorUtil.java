@@ -3,7 +3,10 @@ package org.pal.utils;
 import org.pal.models.Order;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+import java.util.UUID;
 
 public class OrderGeneratorUtil {
     public static Set<Order> bulkGenerateOrder(int orderCount) {

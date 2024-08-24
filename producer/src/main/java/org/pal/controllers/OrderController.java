@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 import static org.pal.utils.OrderGeneratorUtil.bulkGenerateOrder;
+import static org.pal.utils.OrderGeneratorUtil.generateOrder;
 
-@RestController("/api/v1")
+@RestController
 public class OrderController {
     OrderProducerService orderProducerService;
     @Autowired
@@ -25,8 +26,9 @@ public class OrderController {
 
     @GetMapping("/publish-order/{count}")
     public ResponseEntity<String> publishOrder(@PathVariable int count) {
-        Set<Order> orders = OrderGeneratorUtil.bulkGenerateOrder(count);
-        orders.forEach(order -> orderProducerService.sendOrder(order));
+        for (int i = 0; i < count; i++) {
+            orderProducerService.sendOrder(generateOrder());
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

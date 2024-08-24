@@ -16,7 +16,7 @@ public class OrderProducerService {
     }
 
     public void sendOrder(Order order) {
-        kafkaTemplate.send("spring-kafka-test-topic",order.getOrder_id(), order)
+        kafkaTemplate.send("orders",order.getOrder_id(), order)
                 .whenComplete((record, ex) -> {
                     if (ex == null) {
                         System.out.println("Order sent successfully");
