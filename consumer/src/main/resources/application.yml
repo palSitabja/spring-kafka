@@ -10,3 +10,9 @@ spring:
       properties:
         spring.json.trusted.packages: 'org.pal.models'
     bootstrap-servers: 127.0.0.1:9092
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_kafka_db  # Replace with your database URL
+    username: root                      # Replace with your database username
+    password: root                      # Replace with your database password
+    driver-class-name: com.mysql.cj.jdbc.Driver           # Replace with your database driver class name
